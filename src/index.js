@@ -28,7 +28,14 @@ function displayCharacter(character) {
     document.getElementById("image").src = character.image;
     document.getElementById("vote-count").textContent = character.votes;
     document.getElementById("votes-form").dataset.id = character.id;
+
+    // Highlight selected character
+    document.querySelectorAll("#character-bar span").forEach(span => {
+        span.classList.remove("selected-character");
+    });
+    document.querySelector(`[data-id='${character.id}']`).classList.add("selected-character");
 }
+
 
 // Handle vote submission
 document.getElementById("votes-form").addEventListener("submit", (e) => {
