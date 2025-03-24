@@ -18,3 +18,11 @@ function fetchCharacters() {
         })
         .catch((error) => console.error("Error fetching characters:", error));
 }
+
+
+function displayCharacter(character) {
+    document.getElementById("name").textContent = character.name;
+    document.getElementById("image").src = character.image;
+    document.getElementById("vote-count").textContent = character.votes;
+    document.getElementById("votes-form").dataset.id = character.id;
+}
