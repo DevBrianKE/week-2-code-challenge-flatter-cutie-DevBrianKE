@@ -30,8 +30,9 @@ function displayCharacter(character) {
     document.getElementById("votes-form").dataset.id = character.id;
 }
 
+// Handle vote submission
 document.getElementById("votes-form").addEventListener("submit", (e) => {
-    e.preventDefault();
+    e.preventDefault();// Prevent page reload on form submission
     const characterId = e.target.dataset.id;
     const votesInput = document.getElementById("votes").value;
     const voteCountSpan = document.getElementById("vote-count");
@@ -48,3 +49,17 @@ document.getElementById("votes-form").addEventListener("submit", (e) => {
     updateVotes(characterId, updatedVotes);
     e.target.reset();
 });
+
+// Update the vote count for a specific character on the server
+function updateVotes(id, votes) {
+    fetch(`http://localhost:3000/characters/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ votes }),
+    })
+    .then((response) => response.json())
+    .then((data) => console.log("Updated votes:", data))
+    .catch((error) => console.error("Error updating votes:", error));
+}
