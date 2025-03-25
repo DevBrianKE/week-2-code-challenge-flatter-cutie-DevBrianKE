@@ -59,7 +59,7 @@ document.getElementById("votes-form").addEventListener("submit", (e) => {
 
 // Update the vote count for a specific character on the server
 function updateVotes(id, votes) {
-    fetch(`http://localhost:3000/characters/${id}`, {
+    fetch(`https://week-2-code-challenge-flatter-cutie-nuhr.onrender.com/characters/${id}`, { // UPDATED URL
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -70,6 +70,7 @@ function updateVotes(id, votes) {
     .then((data) => console.log("Updated votes:", data))
     .catch((error) => console.error("Error updating votes:", error));
 }
+
 
 // Reset the vote count to 0 when the reset button is clicked
 document.getElementById("reset-btn").addEventListener("click", () => {
