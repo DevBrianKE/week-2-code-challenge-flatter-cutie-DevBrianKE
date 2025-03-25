@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Fetch characters from the server and display them
 function fetchCharacters() {
-    fetch("http://localhost:3000/characters")
+    fetch("https://week-2-code-challenge-flatter-cutie-nuhr.onrender.com/users")
         .then((response) => response.json())
         .then((characters) => {
             const characterBar = document.getElementById("character-bar");
